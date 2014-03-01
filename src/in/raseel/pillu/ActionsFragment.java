@@ -12,5 +12,16 @@ import android.widget.ListView;
 
 
 public class ActionsFragment extends ListFragment {
+	private ActionSelectionListener mListener = null;
+	
+	public interface ActionSelectionListener {
+		public void onSelection (int index);
+	}
+
+	@Override
+	public void onListItemClick(ListView l, View v, int pos, long id) {
+		getListView().setItemChecked(pos, true);
+		mListener.onSelection(pos);
+	}
 	
 }

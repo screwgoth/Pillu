@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.util.Log;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
+import in.raseel.pillu.ActionsFragment.ActionSelectionListener;;
 
-public class SelectorActivity extends Activity {
+public class SelectorActivity extends Activity implements
+		ActionSelectionListener {
 	
 	public static String[] mActionsArray;
 	private DetailsFragment mDetailsFragment;
@@ -29,6 +31,12 @@ public class SelectorActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.selector, menu);
 		return true;
+	}
+
+	@Override
+	public void onSelection(int index) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
