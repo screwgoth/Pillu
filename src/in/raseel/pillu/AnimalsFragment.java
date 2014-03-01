@@ -10,19 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class DetailsFragment extends Fragment {
+public class AnimalsFragment extends Fragment {
 	
 	private static final String TAG = "Pillu";
 	
-	private TextView mDetailsView = null;
-	private int mCurrIdx = -1;
-	
-	public int getShownIndex() {
-		return mCurrIdx;
-	}
-	
+	private TextView mAnimalsView = null;
+
 	public void showSomeText(int index) {
-		mDetailsView.setText("Some other text at : " + index);
+		mAnimalsView.setText("Jungle : " + index);
 	}
 	
 	@Override
@@ -41,16 +36,16 @@ public class DetailsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		Log.i(TAG, getClass().getSimpleName() + ":entered onCreateView()");
-		return inflater.inflate(R.layout.detail_fragment, container, false);
+		return inflater.inflate(R.layout.animals_fragment, container, false);
 	}
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
-		mDetailsView = (TextView) getActivity().findViewById(R.id.detailView);
-		mDetailsView.setBackgroundColor(Color.parseColor("gray"));
-		mDetailsView.setText("Some Text");
+		mAnimalsView = (TextView) getActivity().findViewById(R.id.animalsView);
+		mAnimalsView.setBackgroundColor(Color.parseColor("green"));
+		//mAnimalsView.setText("JUNGLE");
 	}
 	
 	

@@ -5,7 +5,7 @@
     android:baselineAligned="false"
     android:orientation="horizontal" >
 
-    <fragment
+<!--     <fragment
         android:id="@+id/actions"
         android:layout_width="0px"
         android:layout_height="match_parent"
@@ -17,6 +17,19 @@
         android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        class="in.raseel.pillu.DetailsFragment" />
+        class="in.raseel.pillu.DetailsFragment" /> -->
+        
+    <FrameLayout
+        android:id="@+id/actions"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/details"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+    
 
 </LinearLayout>
