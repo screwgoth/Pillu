@@ -21,8 +21,8 @@ public class SelectorActivity extends Activity {
 		mActionsArray = getResources().getStringArray(R.array.Actions);
 		setContentView(R.layout.activity_selector);
 		
-		mDetailsFragment = (DetailsFragment).
-	}
+		mDetailsFragment = (DetailsFragment)getFragmentManager().findFragmentById(R.id.actions)
+;	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
