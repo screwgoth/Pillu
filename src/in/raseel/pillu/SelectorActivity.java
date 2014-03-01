@@ -3,15 +3,15 @@ package in.raseel.pillu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
-//import android.content.pm.ActivityInfo;
-//import android.view.Menu;
+import android.content.pm.ActivityInfo;
+import android.view.Menu;
 
 public class SelectorActivity extends Activity {
 	
 	public static String[] mActionsArray;
 	private DetailsFragment mDetailsFragment;
 	
-	private static final TAG = "Pillu";
+	private static final String TAG = "Pillu";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
