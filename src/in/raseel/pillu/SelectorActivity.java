@@ -16,9 +16,12 @@ public class SelectorActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		
+		mActionsArray = getResources().getStringArray(R.array.Actions);
 		setContentView(R.layout.activity_selector);
+		
+		mDetailsFragment = (DetailsFragment).
 	}
 
 	@Override
