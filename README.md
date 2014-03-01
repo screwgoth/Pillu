@@ -1,4 +1,4 @@
 Pillu
 =====
 
-Android App for Kids
+Pillu is an Android App for Kids
