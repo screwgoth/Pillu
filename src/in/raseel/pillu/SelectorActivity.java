@@ -2,14 +2,21 @@ package in.raseel.pillu;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.pm.ActivityInfo;
-import android.view.Menu;
+import android.util.Log;
+//import android.content.pm.ActivityInfo;
+//import android.view.Menu;
 
 public class SelectorActivity extends Activity {
+	
+	public static String[] mActionsArray;
+	private DetailsFragment mDetailsFragment;
+	
+	private static final TAG = "Pillu";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		setContentView(R.layout.activity_selector);
 	}

@@ -4,5 +4,11 @@
     <string name="app_name">Pillu</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string-array name="Actions" >
+        <item>Colors</item>
+        <item>Alphabet</item>
+        <item>Animals</item>
+        <item>Birds</item>
+    </string-array>
 
 </resources>
