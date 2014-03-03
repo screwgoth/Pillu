@@ -1,5 +1,8 @@
 package in.raseel.pillu;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Color;
@@ -8,17 +11,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class AlphabetFragment extends Fragment {
 	
 	private static final String TAG = "Pillu";
 	
-	private TextView mAlphabetView = null;
-
-	public void showSomeText(int index) {
-		mAlphabetView.setText("abcdefghijklmnopqrstuvwxyz : " + index);
-	}
+	private GridView mAlphabetGridView = null;
+	private ArrayList<Integer> mThumbIdsAlhabets = new ArrayList<Integer>(
+			Arrays.asList(R.drawable.a, R.drawable.b, 
+					R.drawable.c, R.drawable.d, R.drawable.e));
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -43,9 +49,16 @@ public class AlphabetFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
-		mAlphabetView = (TextView) getActivity().findViewById(R.id.alphabetView);
-		mAlphabetView.setBackgroundColor(Color.parseColor("cyan"));
-		mAlphabetView.setText("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		mAlphabetGridView = (GridView) getActivity().findViewById(R.id.alphabetGridview);
+		mAlphabetGridView.setAdapter(new CustomImageAdaptor(this.getActivity(), mThumbIdsAlhabets));
+		mAlphabetGridView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+				
+				Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+				
+			}
+		});
 	}
 	
 	

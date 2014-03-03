@@ -12,8 +12,8 @@ import android.widget.ImageView;
 
 public class CustomImageAdaptor extends BaseAdapter {
 	private static final int PADDING = 20;
-	private static final int WIDTH = 250;
-	private static final int HEIGHT = 250;
+	private static final int WIDTH = 200;
+	private static final int HEIGHT = 200;
 	
 	private Context mContext;
 	private List<Integer> mThumbIds;
