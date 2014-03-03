@@ -5,29 +5,15 @@
     android:baselineAligned="false"
     android:orientation="horizontal" >
 
-<!--     <fragment
-        android:id="@+id/actions"
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        class="in.raseel.pillu.ActionsFragment" />
-
-    <fragment
-        android:id="@+id/details"
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        class="in.raseel.pillu.DetailsFragment" /> -->
-        
     <FrameLayout
         android:id="@+id/actions"
-        android:layout_weight="1"
+        android:layout_weight="30"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/details"
-        android:layout_weight="2"
+        android:layout_weight="70"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
     

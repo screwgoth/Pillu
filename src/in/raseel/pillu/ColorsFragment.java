@@ -1,24 +1,30 @@
 package in.raseel.pillu;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 public class ColorsFragment extends Fragment {
 	
 	private static final String TAG = "Pillu";
-	
-	private TextView mColorsView = null;
 
-	public void showSomeText(int index) {
-		mColorsView.setText("Jungle : " + index);
-	}
+	private GridView mColorGridView = null;
+	private ArrayList<Integer> mThumbIdsColors = new ArrayList<Integer>(
+			Arrays.asList(R.drawable.yellow, R.drawable.red,
+					R.drawable.green, R.drawable.orange,R.drawable.blue));
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -43,8 +49,16 @@ public class ColorsFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
-		mColorsView = (TextView) getActivity().findViewById(R.id.colorsView);
-		mColorsView.setBackgroundColor(Color.parseColor("yellow"));
+		mColorGridView = (GridView) getActivity().findViewById(R.id.colorsGridview);
+		mColorGridView.setAdapter(new CustomImageAdaptor(this.getActivity(), mThumbIdsColors));
+		mColorGridView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+				
+				Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+				
+			}
+		});
 	}
 	
 	
