@@ -57,6 +57,11 @@ public class ColorsFragment extends Fragment {
 				
 				Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
 				
+				Intent colotIntent = new Intent(getActivity(), ColorDetailActivity.class);
+				colotIntent.putExtra("POS", (int)id);
+				Log.i(TAG, "Strarting the ColorDetail Activity");
+				startActivity(colotIntent);
+				
 			}
 		});
 	}
