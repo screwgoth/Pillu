@@ -5,6 +5,7 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class ColorsFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
 		mColorGridView = (GridView) getActivity().findViewById(R.id.colorsGridview);
+		mColorGridView.setBackgroundColor(Color.parseColor("white"));
 		mColorGridView.setAdapter(new CustomImageAdaptor(this.getActivity(), mThumbIdsColors));
 		mColorGridView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,

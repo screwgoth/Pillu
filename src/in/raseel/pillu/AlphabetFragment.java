@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,6 +48,7 @@ public class AlphabetFragment extends android.support.v4.app.Fragment {
 		super.onActivityCreated(savedInstanceState);
 		Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
 		mAlphabetGridView = (GridView) getActivity().findViewById(R.id.alphabetGridview);
+		mAlphabetGridView.setBackgroundColor(Color.parseColor("white"));
 		mAlphabetGridView.setAdapter(new CustomImageAdaptor(this.getActivity(), mThumbIdsAlhabets));
 		mAlphabetGridView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
