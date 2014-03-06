@@ -1,131 +1,157 @@
 package in.raseel.pillu;
 
+import in.raseel.pillu.SelectorActivity;
+import in.raseel.pillu.R;
+import in.raseel.pillu.ColorsFragment;
+import in.raseel.pillu.AlphabetFragment;
+import in.raseel.pillu.AnimalsFragment;
+import in.raseel.pillu.MainLayout;
+
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.content.pm.ActivityInfo;
 import android.view.Menu;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import in.raseel.pillu.ActionsFragment.ActionSelectionListener;
-
-public class SelectorActivity extends Activity implements
-		ActionSelectionListener {
-	
-	public static String[] mActionsArray;
-	
-	private static final int MATCH_PARENT = LinearLayout.LayoutParams.MATCH_PARENT;
-	
-	private FragmentManager mFragmentManager;
-	private FrameLayout mActionsFrameLayout, mDetailsFrameLayout;
-	
-	//private DetailsFragment mDetailsFragment;
-	private final DetailsFragment mDetailsFragment = new DetailsFragment();
-	private final AlphabetFragment mAlphabetFragment = new AlphabetFragment();
-	private final AnimalsFragment mAnimalsFragment = new AnimalsFragment();
-	private final ColorsFragment mColorsFragment = new ColorsFragment();
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 
+public class SelectorActivity extends FragmentActivity {
 	
 	private static final String TAG = "Pillu";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		Log.i(TAG, getClass().getSimpleName() + ": entered onCreate()");
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		
-		mActionsArray = getResources().getStringArray(R.array.Actions);
-		
-		setContentView(R.layout.activity_selector);
-		
-		mActionsFrameLayout = (FrameLayout) findViewById(R.id.actions);
-		mDetailsFrameLayout = (FrameLayout) findViewById(R.id.details);
-		
-		mFragmentManager = getFragmentManager();
-		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-		fragmentTransaction.add(R.id.actions, new ActionsFragment());
-		//fragmentTransaction.addToBackStack(null);
-		Log.i(TAG, "Action Frame Added");
-		//fragmentTransaction.commit();
-		
-		fragmentTransaction.add(R.id.details, mDetailsFragment );
-		//fragmentTransaction.addToBackStack(null);
-		fragmentTransaction.commit();
-		mFragmentManager.executePendingTransactions();
-		
-		//setLayout();
-		
-		mFragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-			public void onBackStackChanged() {
-				Log.i(TAG, "BackStack Changed, Listener invoked");
-				//setLayout();
-			}
-		});
-		//mDetailsFragment = (DetailsFragment)getFragmentManager().findFragmentById(R.id.details);
-	}
-	
-	private void setLayout() {
-		Log.i(TAG, "Entered on setLayout()");
-		if(!mDetailsFragment.isAdded() && !mAlphabetFragment.isAdded()) {
-			Log.i(TAG, "Since DetailsFragment is not yet Added, Layout has only Actions");
-			mActionsFrameLayout.setLayoutParams(new LinearLayout.LayoutParams
-					(MATCH_PARENT, MATCH_PARENT));
-			mDetailsFrameLayout.setLayoutParams(new LinearLayout.LayoutParams
-					(0, MATCH_PARENT));
+    // The MainLayout which will hold both the sliding menu and our main content
+    // Main content will holds our Fragment respectively
+    MainLayout mainLayout;
+    
+    // ListView menu
+    private ListView lvMenu;
+    private String[] lvMenuItems;
+    
+    public static String[] mActionsArray;
+    
+    // Menu button
+    Button btMenu;
+    
+    // Title according to fragment
+    TextView tvTitle;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        // Inflate the mainLayout
+        mainLayout = (MainLayout)this.getLayoutInflater().inflate(R.layout.activity_selector, null);
+        setContentView(mainLayout);
+        
+        // Init menu
+        
+        lvMenuItems = getResources().getStringArray(R.array.Actions);
+        lvMenu = (ListView) findViewById(R.id.activity_main_menu_listview);
+        lvMenu.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, lvMenuItems));
+        lvMenu.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onMenuItemClick(parent, view, position, id);
+            }
+            
+        });
+        
+        
+        // Get menu button
+        btMenu = (Button) findViewById(R.id.activity_main_content_button_menu);
+        btMenu.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Show/hide the menu
+                toggleMenu(v);
+            }
+        });
+        
+        // Get title textview
+        tvTitle = (TextView) findViewById(R.id.activity_main_content_title);
+        
+        
+        // Add FragmentMain as the initial fragment       
+        FragmentManager fm = SelectorActivity.this.getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        
+        Fragment detailsFragment = new DetailsFragment();
+        ft.add(R.id.activity_main_content_fragment, detailsFragment);
+        ft.commit();   
+        
+    }
 
-		} else if (mDetailsFragment.isAdded() || mAlphabetFragment.isAdded()){
-			Log.i(TAG, "Since DetailsFragment is added, the Layout is two-pane");
-			mActionsFrameLayout.setLayoutParams(new LinearLayout.LayoutParams
-					(0, MATCH_PARENT, 1f));
-			mDetailsFrameLayout.setLayoutParams(new LinearLayout.LayoutParams
-					(0, MATCH_PARENT, 2f));
-		}
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.selector, menu);
+        return true;
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.i(TAG, getClass().getSimpleName() + ": entered onCreateOptionsMenu()");
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.selector, menu);
-		return true;
-	}
-
-	@Override
-	public void onSelection(int index) {
-		Log.i(TAG, getClass().getSimpleName() + ": entered onSelection()");
-		Log.i(TAG, "Index Selected is : " + index);
-		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-		switch (index) {
-		case 0:
-			fragmentTransaction.replace(R.id.details, mColorsFragment);
-			break;
-		case 3:
-			// This case is a little Mad. Definitely needs to be replaced.
-			//fragmentTransaction.add(R.id.details, mDetailsFragment );
-			fragmentTransaction.replace(R.id.details, mDetailsFragment );
-			fragmentTransaction.addToBackStack(null);
-			fragmentTransaction.commit();
-			mFragmentManager.executePendingTransactions();
-			if(mDetailsFragment.getShownIndex() != index) {
-				mDetailsFragment.showSomeText(index);
-			}
-			// Look Ma! No break;
-			return;
-		case 1:
-			fragmentTransaction.replace(R.id.details, mAlphabetFragment);
-			break;
-		case 2:
-			fragmentTransaction.replace(R.id.details, mAnimalsFragment);
-			break;
-		}
-		fragmentTransaction.addToBackStack(null);
-		fragmentTransaction.commit();
-		mFragmentManager.executePendingTransactions();
-		
-	}
+    public void toggleMenu(View v){
+        mainLayout.toggleMenu();
+    }
+    
+    // Perform action when a menu item is clicked
+    private void onMenuItemClick(AdapterView<?> parent, View view, int position, long id) {
+    	Log.i(TAG, "Clicked position : " + position);
+        String selectedItem = lvMenuItems[position];
+        String currentItem = tvTitle.getText().toString();
+        
+        // Do nothing if selectedItem is currentItem
+        if(selectedItem.compareTo(currentItem) == 0) {
+            mainLayout.toggleMenu();
+            return;
+        }
+            
+        FragmentManager fm = SelectorActivity.this.getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment fragment = null;
+        
+        if(selectedItem.compareTo("Colors") == 0) {
+        	Log.i(TAG, "Invoking the ColorsFragment");
+        	fragment = new ColorsFragment();
+        } else if (selectedItem.compareTo("Alphabets") == 0) {
+        	Log.i(TAG, "Invoking the AlphabetsFragment");
+        	fragment = new AlphabetFragment();
+        } else if (selectedItem.compareTo("Animals") == 0) {
+        	Log.i(TAG, "Invoking the AnimalsFragment");
+        	fragment = new AnimalsFragment();
+        } 
+        
+        if(fragment != null) {
+            // Replace current fragment by this new one
+            ft.replace(R.id.activity_main_content_fragment, fragment);
+            ft.commit();
+            
+            // Set title accordingly
+            tvTitle.setText(selectedItem);
+        }
+        
+        // Hide menu anyway
+        mainLayout.toggleMenu();
+    }
+    
+    @Override
+    public void onBackPressed() {
+        if (mainLayout.isMenuShown()) {
+            mainLayout.toggleMenu();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+    
 	
 	@Override
 	protected void onDestroy() {
@@ -162,6 +188,4 @@ public class SelectorActivity extends Activity implements
 		Log.i(TAG, getClass().getSimpleName() + ":entered onStop()");
 		super.onStop();
 	}
-
-
 }

@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string-array name="Actions" >
         <item>Colors</item>
-        <item>Alphabet</item>
+        <item>Alphabets</item>
         <item>Animals</item>
         <item>Birds</item>
     </string-array>

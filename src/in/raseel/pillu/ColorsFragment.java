@@ -3,9 +3,8 @@ package in.raseel.pillu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
 public class ColorsFragment extends Fragment {
 	
+	public ColorsFragment() {
+		
+	}
 	private static final String TAG = "Pillu";
 
 	private GridView mColorGridView = null;

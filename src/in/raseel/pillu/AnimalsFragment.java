@@ -1,7 +1,7 @@
 package in.raseel.pillu;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +45,6 @@ public class AnimalsFragment extends Fragment {
 		Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
 		mAnimalsView = (TextView) getActivity().findViewById(R.id.animalsView);
 		mAnimalsView.setBackgroundColor(Color.parseColor("green"));
-		//mAnimalsView.setText("JUNGLE");
 	}
 	
 	
