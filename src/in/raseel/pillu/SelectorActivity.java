@@ -56,8 +56,10 @@ public class SelectorActivity extends FragmentActivity {
         
         lvMenuItems = getResources().getStringArray(R.array.Actions);
         lvMenu = (ListView) findViewById(R.id.activity_main_menu_listview);
+//        lvMenu.setAdapter(new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1, lvMenuItems));
         lvMenu.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, lvMenuItems));
+                R.layout.custom_list_view, lvMenuItems));
         lvMenu.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

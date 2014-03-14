@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class AlphabetFragment extends android.support.v4.app.Fragment {
+public class AlphabetFragment extends Fragment {
 	
 	private static final String TAG = "Pillu";
 	

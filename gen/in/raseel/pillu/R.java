@@ -28,19 +28,22 @@ public final class R {
         public static final int apple=0x7f020001;
         public static final int b=0x7f020002;
         public static final int baby_icon=0x7f020003;
-        public static final int blue=0x7f020004;
-        public static final int c=0x7f020005;
-        public static final int d=0x7f020006;
-        public static final int e=0x7f020007;
-        public static final int green=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int orange=0x7f02000a;
-        public static final int red=0x7f02000b;
-        public static final int yellow=0x7f02000c;
-        public static final int yellow_detail=0x7f02000d;
+        public static final int bidir_arrow=0x7f020004;
+        public static final int bidirectionalarrow=0x7f020005;
+        public static final int blue=0x7f020006;
+        public static final int c=0x7f020007;
+        public static final int d=0x7f020008;
+        public static final int e=0x7f020009;
+        public static final int green=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int orange=0x7f02000c;
+        public static final int red=0x7f02000d;
+        public static final int upload_image=0x7f02000e;
+        public static final int yellow=0x7f02000f;
+        public static final int yellow_detail=0x7f020010;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000a;
+        public static final int action_settings=0x7f0a000e;
         public static final int activity_main_content_button_menu=0x7f0a0001;
         public static final int activity_main_content_fragment=0x7f0a0003;
         public static final int activity_main_content_title=0x7f0a0002;
@@ -48,9 +51,13 @@ public final class R {
         public static final int alphabetGridview=0x7f0a0004;
         public static final int animalsView=0x7f0a0005;
         public static final int backButton=0x7f0a0006;
+        public static final int button1=0x7f0a000d;
         public static final int colorButton=0x7f0a0007;
         public static final int colorsGridview=0x7f0a0008;
         public static final int detailView=0x7f0a0009;
+        public static final int editText1=0x7f0a000b;
+        public static final int familyGridview=0x7f0a000a;
+        public static final int imageView1=0x7f0a000c;
     }
     public static final class layout {
         public static final int action_item=0x7f030000;
@@ -59,7 +66,10 @@ public final class R {
         public static final int animals_fragment=0x7f030003;
         public static final int color_detail=0x7f030004;
         public static final int colors_fragment=0x7f030005;
-        public static final int detail_fragment=0x7f030006;
+        public static final int custom_list_view=0x7f030006;
+        public static final int detail_fragment=0x7f030007;
+        public static final int family_fragment=0x7f030008;
+        public static final int upload_row=0x7f030009;
     }
     public static final class menu {
         public static final int selector=0x7f090000;

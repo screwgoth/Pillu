@@ -93,7 +93,7 @@ public class MainLayout extends LinearLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         
         mainLayoutWidth = MeasureSpec.getSize(widthMeasureSpec);
-        menuRightMargin = mainLayoutWidth * 50 / 100;
+        menuRightMargin = mainLayoutWidth * 50 / 100;        
         // Nothing to do, since we only care about how to layout
     }
     

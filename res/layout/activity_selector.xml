@@ -13,7 +13,6 @@
             android:id="@+id/activity_main_menu_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#B4D609"
             android:cacheColorHint="#00000000" >
         </ListView>
     </LinearLayout>
@@ -37,6 +36,7 @@
 	            android:layout_height="wrap_content"
 	            android:onClick="toggleMenu"
 	            android:text="Menu"
+	            android:background="@drawable/bidirectionalarrow"
 	            android:id="@+id/activity_main_content_button_menu" />
             
             <TextView
